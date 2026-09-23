@@ -92,7 +92,10 @@ h3.refgroup{grid-column:1/-1;font-size:.74rem;text-transform:uppercase;letter-sp
 .intro h2{font-size:1.75rem;font-weight:800;line-height:1.15;margin-bottom:10px}
 .intro p{margin:0 0 8px;max-width:62ch;color:var(--ink-2)}
 .rules{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px;font-size:.9rem}
-.rules h3{font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:10px;font-weight:700}
+.rules h3{font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:0;font-weight:700}
+.rules summary{list-style:none}
+.rules summary::-webkit-details-marker{display:none}
+.rules ol{margin-top:10px}
 .rules ol{margin:0;padding-left:18px;display:grid;gap:8px;color:var(--ink-2)}
 .rules b{color:var(--ink)}
 
@@ -195,6 +198,59 @@ details.esp[open] summary::after{content:"–"}
 .foot .pend{background:var(--surface);border:1px dashed var(--line-2);border-radius:10px;padding:12px 14px;max-width:90ch}
 .foot .pend b{color:var(--ink)}
 @media (prefers-reduced-motion:no-preference){details.esp summary{transition:background .15s} details.esp summary:hover{background:var(--surface-2)}}
+
+/* ---- móvil ---- */
+@media (max-width:720px){
+  .logo{height:44px}
+  .masthead .wrap{padding-block:14px;gap:10px}
+  .mast-title h1{font-size:1.15rem}
+  .mast-title p{font-size:.78rem}
+  .intro{padding-block:20px 12px;gap:14px}
+  .intro h2{font-size:1.3rem}
+  .intro p{font-size:.92rem}
+  .intro p.hint{display:none}
+  .rules{padding:12px 14px}
+  .rules summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center}
+  .rules summary::-webkit-details-marker{display:none}
+  .rules summary::after{content:"+";color:var(--muted)}
+  .rules[open] summary::after{content:"–"}
+  .rules ol{margin-top:10px}
+  .searchbar{padding:12px 14px;margin-bottom:16px}
+  .searchbar label{font-size:.92rem}
+  .searchrow input{font-size:16px;padding:10px 12px}
+  .examples button{font-size:.76rem;padding:4px 9px}
+  .ciclo-head{margin-bottom:8px}
+  .ciclo-head h2{font-size:1.15rem}
+  .ciclo-head .eyebrow{font-size:.66rem}
+  .ciclo-head .meta{font-size:.78rem;max-width:none}
+  .ciclo-head .meta .meta-esp{display:none}
+  h2.marca{font-size:.95rem;margin-top:22px}
+  /* la tabla pasa a lista apilada: nada de scroll lateral */
+  .tablewrap{overflow:visible}
+  table{min-width:0;font-size:.9rem}
+  thead{display:none}
+  table,tbody,tr,td{display:block;width:auto}
+  tr{padding:10px 12px;border-bottom:1px solid var(--line)}
+  tr:last-child{border-bottom:0}
+  td{padding:0;border:0;width:auto}
+  td.curso,td.cod{display:inline;font-size:.76rem;color:var(--muted);font-family:var(--mono)}
+  td.curso::after{content:" · "}
+  td.mod{margin:2px 0 8px;font-weight:600;line-height:1.35}
+  td.esp{width:auto}
+  tr.curso-sep{padding:6px 12px;background:var(--surface-2)}
+  tr.curso-sep td{padding:0;background:transparent;display:block}
+  .chips{gap:5px}
+  .chip{font-size:.76rem;padding:3px 9px}
+  .note-row{font-size:.78rem}
+  .modlist{max-height:380px}
+  .modlist .grp ul{grid-template-columns:1fr}
+  .panel header{padding:12px 14px 6px}
+  .panel header h3{font-size:1rem}
+  .panel .tit{padding:4px 14px 14px}
+  .ref > h2{font-size:1.15rem}
+  details.esp summary{padding:10px 12px;font-size:.92rem;flex-wrap:wrap}
+  details.esp summary .cuerpo{margin-left:0;flex-basis:100%;padding-left:34px}
+}
 </style>
 
 <header class="masthead">
@@ -214,11 +270,11 @@ details.esp[open] summary::after{content:"–"}
   <section class="intro">
     <div>
       <h2>¿Qué titulación hace falta para impartir cada módulo?</h2>
-      <p>Cada módulo profesional está asignado a una <b>especialidad docente</b> (fuente: atribución docente de cada título, TodoFP). Y cada especialidad tiene un <b>listado cerrado de titulaciones</b> en el Anexo I de la Resolución de 23 de mayo de 2025 de la DG de Recursos Humanos (BOCM n.º 128, 30/05/2025), que es el que se aplica también al profesorado de centros privados por la Orden de 23 de febrero de 1998.</p>
-      <p>Escribe una titulación o un módulo para ver al instante qué se puede impartir con atribución directa.</p>
+      <p>Cada módulo profesional está asignado a una <b>especialidad docente</b> (TodoFP) y cada especialidad tiene un <b>listado cerrado de titulaciones</b> en el Anexo I de la Resolución de 23 de mayo de 2025 (BOCM n.º 128, 30/05/2025), aplicable también a centros privados por la Orden de 23 de febrero de 1998.</p>
+      <p class="hint">Escribe una titulación o un módulo para ver al instante qué se puede impartir con atribución directa.</p>
     </div>
-    <aside class="rules">
-      <h3>Reglas de lectura</h3>
+    <details class="rules" id="rules" open>
+      <summary><h3>Reglas de lectura</h3></summary>
       <ol>
         <li><b>Atribución directa</b>: la titulación figura en el Anexo I para la especialidad del módulo.</li>
         <li>En todos los casos se exige además el <b>Máster de Formación del Profesorado</b> (o formación pedagógica equivalente).</li>
@@ -226,7 +282,7 @@ details.esp[open] summary::after{content:"–"}
         <li>Varias especialidades (101, 107, 227, 011 y todas las sanitarias) admiten además una vía por rama de conocimiento + <b>24 créditos ECTS afines</b> (nota (*) del Anexo I).</li>
         <li>Los módulos marcados <b>EXP</b> admiten también a una persona experta del sector productivo (art. 88 LO 3/2022), previa autorización.</li>
       </ol>
-    </aside>
+    </details>
   </section>
 
   <section class="searchbar">
@@ -717,7 +773,7 @@ document.getElementById("ciclos").innerHTML = MARCAS.map((marca,mi)=>`<h2 class=
   return `<section class="ciclo" id="${c.id}">
     <div class="ciclo-head">
       <div><div class="eyebrow"><span class="sigla">${c.id}</span><span>${c.grado} · ${esc(c.familia)} · ${esc(c.marca)}</span></div><h2>${esc(c.nombre)}</h2></div>
-      <div class="meta">Se imparte en: ${esc(c.centros)}<br>Especialidades: ${used.map(k=>`${code(k)} ${ESP[k].n}`).join(" · ")}</div>
+      <div class="meta">Se imparte en: ${esc(c.centros)}<span class="meta-esp"><br>Especialidades: ${used.map(k=>`${code(k)} ${ESP[k].n}`).join(" · ")}</span></div>
     </div>
     <div class="tablewrap"><table><thead><tr><th>Curso</th><th>Código</th><th>Módulo profesional</th><th>Especialidad docente (pulsa para ver titulaciones)</th></tr></thead><tbody>${rows}</tbody></table>
     <div class="note-row">Cuando un módulo tiene varias especialidades, basta con la titulación de cualquiera de ellas.${NOTAS[c.id]||""}</div></div>
@@ -794,6 +850,7 @@ function run(){
   }
   results.innerHTML=html; results.hidden=false;
 }
+try{ if(matchMedia("(max-width:720px)").matches) document.getElementById("rules").open=false; }catch(e){}
 if(location.hash){ const el=document.getElementById(location.hash.slice(1)); if(el) el.scrollIntoView(); }
 </script>
 </body>
